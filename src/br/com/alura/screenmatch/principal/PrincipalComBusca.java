@@ -20,6 +20,8 @@ import java.util.Scanner;
 public class PrincipalComBusca {
     public static void main(String[] args) throws IOException, InterruptedException {
         Scanner leitura = new Scanner(System.in);
+        System.out.println("Digite sua chave de acesso para acessar o Omdb: ");
+        String chave = leitura.nextLine();
         String busca = "";
         List<Titulo> titulos = new ArrayList<>();
         Gson gson = new GsonBuilder()
@@ -36,7 +38,7 @@ public class PrincipalComBusca {
                 break;
             }
 
-            String endereco = "https://www.omdbapi.com/?t=" + busca.replace(" ", "+") + "&apikey=";
+            String endereco = "https://www.omdbapi.com/?t=" + busca.replace(" ", "+") + "&apikey=" + chave;
             System.out.println(endereco);
             try {
                 HttpClient client = HttpClient.newHttpClient();
